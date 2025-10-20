@@ -15,5 +15,3 @@ jobs:
     with:
       head_sha: ${{ github.event.pull_request.head.sha || github.sha }}
       parent_workflow_id: ${{ github.workflow }}
-    secrets:
-      ci_read_token: ${{ secrets.CI_READ_TOKEN }}
