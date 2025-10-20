@@ -1,0 +1,19 @@
+name: Rails CI
+
+on:
+  push:
+  pull_request_target:
+
+permissions:
+  contents: read
+  checks: write
+  actions: read
+
+jobs:
+  ci:
+    uses: aedipamoss/child/.github/workflows/rails-ci.yml@main
+    with:
+      head_sha: ${{ github.event.pull_request.head.sha || github.sha }}
+      parent_workflow_id: ${{ github.workflow }}
+    secrets:
+      ci_read_token: ${{ secrets.CI_READ_TOKEN }}
